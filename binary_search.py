@@ -91,6 +91,9 @@ def count_repeats(xs, x):
         if x > xs[mid]:
             return lessthan(left, mid-1)
 
+    if len(xs) == 0:
+        return 0 
+        
     a = morethan(left, right)
     b = lessthan(left, right)
 
