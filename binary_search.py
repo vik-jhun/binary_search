@@ -69,12 +69,13 @@ def count_repeats(xs, x):
                 return mid
             else:
                 return morethan(left, mid-1)
-            if left == right:
-                return None
-            if x < xs[mid]:
-                return morethan(mid+1, right)
-            if x > xs[mid]:
-                return morethan(left, mid-1)
+
+        if left == right:
+            return None
+        if x < xs[mid]:
+            return morethan(mid+1, right)
+        if x > xs[mid]:
+            return morethan(left, mid-1)
 
     def lessthan(left, right):
         mid = (left+right)//2
@@ -83,6 +84,7 @@ def count_repeats(xs, x):
                 return mid
             else:
                 return lessthan(mid+1, right)
+                
         if left == right:
             return None
         if x < xs[mid]:
