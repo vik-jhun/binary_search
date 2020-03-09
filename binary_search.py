@@ -62,9 +62,6 @@ def count_repeats(xs, x):
     left = 0
     right = len(xs)-1
 
-    if len(xs) == 0:
-        return 0
-
     def morethan(left,right):
         mid = (left+right)//2
         if xs[mid] == x:
@@ -92,6 +89,9 @@ def count_repeats(xs, x):
             return lessthan(mid+1, right)
         if x > xs[mid]:
             return lessthan(left, mid-1)
+    
+    if len(xs) == 0:
+        return 0
         
     a = morethan(left, right)
     b = lessthan(left, right)
@@ -121,24 +121,24 @@ def argmin(f, lo, hi, epsilon=1e-3):
     -0.00016935087808430278
     '''
 
-    # if hi-lo < epsilon:
-    #     return hi
+    if hi-lo < epsilon:
+        return hi
 
-    # else: 
-    #     high_value = f(hi)
-    #     low_value = f(lo)
+    else: 
+        high_value = f(hi)
+        low_value = f(lo)
 
-    #     mid = (hi+lo)/2
-    #     m1 = (mid+lo)/2
-    #     m2 = (mid+hi)/2
+        mid = (hi+lo)/2
+        m1 = (mid+lo)/2
+        m2 = (mid+hi)/2
 
-    #     m1_value = f(m1)
-    #     m2_value = f(m2)
+        m1_value = f(m1)
+        m2_value = f(m2)
 
-    #     minimized = min(low_value, m1_value, m2_value, high_value)
+        minimized = min(low_value, m1_value, m2_value, high_value)
 
-    #     if minimized  == low_value or minimized == m1_value:
-    #         return argmin(f, lo, m2, epsilon) 
-    #     else:
-    #         return argmin(f, m1, hi, epsilon)
+        if minimized  == low_value or minimized == m1_value:
+            return argmin(f, lo, m2, epsilon) 
+        else:
+            return argmin(f, m1, hi, epsilon)
 
