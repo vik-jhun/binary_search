@@ -99,7 +99,13 @@ def count_repeats(xs, x):
         if x > xs[mid]:
             return lessthan(left, mid-1)
 
-    return morethan(left, right) - lessthan(left, right) +1
+    a = morethan(left, right)
+    b = lessthan(left, right)
+
+    if a == None or b  == None:
+        return 0
+    else:
+        return a-b+1
 
 
 def argmin(f, lo, hi, epsilon=1e-3):
