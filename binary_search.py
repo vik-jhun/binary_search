@@ -88,7 +88,7 @@ def count_repeats(xs, x):
     def lessthan(left, right):
         mid = (left+right)//2
         if x == xs[mid]:
-            if mid == len(xs-1) or x > xs[mid+1]:
+            if mid == len(xs)-1 or x > xs[mid+1]:
                 return mid
             else:
                 return lessthan(mid+1, right)
