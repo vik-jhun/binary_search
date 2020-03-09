@@ -14,6 +14,15 @@ def find_smallest_positive(xs):
     True
     '''
 
+    if len(xs) == 0:
+        return None
+
+    if len(xs) == 1:
+        if xs[0] <= 0:
+            return None
+        else:
+            return 0
+            
     left = 0 
     right = len(xs)-1
 
