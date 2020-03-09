@@ -14,11 +14,6 @@ def find_smallest_positive(xs):
     True
     '''
 
-    if xs == []:
-        return None
-    if xs[0]>0: 
-        return 0
-
     left = 0
     right = len(xs)-1
 
@@ -36,9 +31,13 @@ def find_smallest_positive(xs):
             return go(left, mid-1)
         if xs[mid]<0:
             return go(mid+1, right)
-        if left == right:
-            return None
-    return go(left,right)
+
+    if len(xs) == 0:
+        return None
+    if xs[0]>0:
+        return 0
+    else:
+        return go(left,right)
 
 
 
@@ -62,6 +61,9 @@ def count_repeats(xs, x):
 
     left = 0
     right = len(xs)-1
+
+    if len(xs) == 0:
+        return 0
 
     def morethan(left,right):
         mid = (left+right)//2
@@ -90,9 +92,6 @@ def count_repeats(xs, x):
             return lessthan(mid+1, right)
         if x > xs[mid]:
             return lessthan(left, mid-1)
-
-    if len(xs) == 0:
-        return 0 
         
     a = morethan(left, right)
     b = lessthan(left, right)
