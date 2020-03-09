@@ -125,13 +125,20 @@ def argmin(f, lo, hi, epsilon=1e-3):
         return hi
 
     else: 
-        mid = (hi+lo)//2
-        m1 = (mid+lo)//2
-        m2 = (mid+hi)//2
+        high_value = f(hi)
+        low_value = f(lo)
+
+        mid = (hi+lo)/2
+        m1 = (mid+lo)/2
+        m2 = (mid+hi)/2
 
         m1_value = f(m1)
         m2_value = f(m2)
 
-        if min(f(hi), f(lo), f(m1), f(m2)) == f(lo) or min(f(hi), f(lo), f(m1), f(m2)) == f(hi):
+        minimized = min(low_value, m1_value, m2_value, high_value)
+
+        if minimized  == low_value or minimized == m1_value:
             return argmin(f, lo, m2, epsilon) 
+        else:
+            return argmin(f, m1, hi, epsilon)
 
