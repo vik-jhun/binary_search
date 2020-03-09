@@ -100,7 +100,7 @@ def count_repeats(xs, x):
     if a == None or b  == None:
         return 0
     else:
-        return a-b+1
+        return b-a+1
 
 
 def argmin(f, lo, hi, epsilon=1e-3):
